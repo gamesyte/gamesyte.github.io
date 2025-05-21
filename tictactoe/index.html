@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Tic-Tac-Toe</title>
+</head>
+<body style="font-family:sans-serif;text-align:center;background:#121212;color:white;">
+  <h1 style="color:#00f7ff;">Tic-Tac-Toe</h1>
+  <div style="display:flex;justify-content:center;gap:50px;margin:20px;">
+    <div>Player X: <span id="scoreX">0</span></div>
+    <div>Player O: <span id="scoreO">0</span></div>
+  </div>
+  <table style="margin:auto;border-collapse:collapse;">
+    <tbody id="board"></tbody>
+  </table>
+  <h2 id="message" style="margin-top:20px;"></h2>
+  <button onclick="resetBoard()" style="margin-top:15px;padding:10px 20px;border:none;background:#00f7ff;color:black;font-weight:bold;border-radius:8px;">Restart</button>
+
+  <script>
+    let currentPlayer = 'X';
+    let board = Array(3).fill().map(() => Array(3).fill(''));
+    let scoreX = 0, scoreO = 0;
+
+    const boardElement = document.getElementById("board");
+    const message = document.getElementById("message");
+    const scoreXEl = document.getElementById("scoreX");
+    const scoreOEl = document.getElementById("scoreO");
+
+    function drawBoard() {
+      boardElement.innerHTML = '';
+      for (let i = 0; i < 3; i++) {
+        const row = document.createElement('tr');
+        for (let j = 0; j < 3; j++) {
+          const cell = document.createElement('td');
+          cell.textContent = board[i][j];
+          cell.style.cssText = "width:100px;height:100px;font-size:36px;border:2px solid white;cursor:pointer;text-align:center;";
+          cell.onclick = () => makeMove(i, j);
+          row.appendChild(cell);
+        }
+        boardElement.appendChild(row);
+      }
+    }
+
+    function makeMove(i, j) {
+      if (board[i][j] !== '') return;
+      board[i][j] = currentPlayer;
+      drawBoard();
+      if (checkWin(currentPlayer)) {
+        message.textContent = `Player ${currentPlayer} Wins!`;
+        if (currentPlayer === 'X') scoreX++; else scoreO++;
+        updateScore();
+        setTimeout(resetBoard, 1500);
+      } else if (board.flat().every(c => c !== '')) {
+        message.textContent = "It's a Draw!";
+        setTimeout(resetBoard, 1500);
+      } else {
+        currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+      }
+    }
+
+    function checkWin(player) {
+      return [0,1,2].some(i =>
+        board[i].every(c => c === player) ||
+        board.map(row => row[i]).every(c => c === player)
+      ) || board[0][0] === player && board[1][1] === player && board[2][2] === player ||
+         board[0][2] === player && board[1][1] === player && board[2][0] === player;
+    }
+
+    function updateScore() {
+      scoreXEl.textContent = scoreX;
+      scoreOEl.textContent = scoreO;
+    }
+
+    function resetBoard() {
+      board = Array(3).fill().map(() => Array(3).fill(''));
+      currentPlayer = 'X';
+      message.textContent = '';
+      drawBoard();
+    }
+
+    drawBoard();
+  </script>
+</body>
+</html>

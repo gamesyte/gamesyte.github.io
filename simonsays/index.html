@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head><title>Simon Says</title></head>
+<body style="background:#111;text-align:center;font-family:sans-serif;color:white;">
+  <h1 style="color:#00e5ff;">Simon Says</h1>
+  <h2>Score: <span id="score">0</span></h2>
+  <div style="display:grid;grid-template-columns:repeat(2,100px);gap:15px;justify-content:center;margin-top:30px;" id="buttons">
+    <div id="red" style="width:100px;height:100px;background:#f44336;border-radius:10px;"></div>
+    <div id="green" style="width:100px;height:100px;background:#4caf50;border-radius:10px;"></div>
+    <div id="blue" style="width:100px;height:100px;background:#2196f3;border-radius:10px;"></div>
+    <div id="yellow" style="width:100px;height:100px;background:#ffeb3b;border-radius:10px;"></div>
+  </div>
+
+  <script>
+    const colors = ['red', 'green', 'blue', 'yellow'];
+    let sequence = [], userSequence = [], score = 0;
+
+    function flash(id) {
+      const el = document.getElementById(id);
+      el.style.opacity = '0.5';
+      setTimeout(() => el.style.opacity = '1', 300);
+    }
+
+    function playSequence() {
+      let i = 0;
+      const interval = setInterval(() => {
+        flash(sequence[i]);
+        i++;
+        if (i >= sequence.length) clearInterval(interval);
+      }, 600);
+    }
+
+    function nextRound() {
+      const next = colors[Math.floor(Math.random() * colors.length)];
+      sequence.push(next);
+      playSequence();
+    }
+
+    function resetGame() {
+      alert("Game Over! Final Score: " + score);
+      sequence = [];
+      userSequence = [];
+      score = 0;
+      document.getElementById("score").textContent = score;
+      nextRound();
+    }
+
+    colors.forEach(color => {
+      const el = document.getElementById(color);
+      el.onclick = () => {
+        userSequence.push(color);
+        flash(color);
+        const i = userSequence.length - 1;
+        if (userSequence[i] !== sequence[i]) {
+          resetGame();
+          return;
+        }
+        if (userSequence.length === sequence.length) {
+          score++;
+          document.getElementById("score").textContent = score;
+          userSequence = [];
+          setTimeout(nextRound, 1000);
+        }
+      };
+    });
+
+    nextRound();
+  </script>
+</body>
+</html>
