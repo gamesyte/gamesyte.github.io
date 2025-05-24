@@ -84,42 +84,6 @@
       animation-delay: calc(0.05s * var(--i));
     }
 
-    .compat-dot {
-      position: absolute;
-      top: 10px;
-      left: 10px;
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-    }
-
-    .compat-warning {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: rgba(0, 0, 0, 0.8);
-      color: white;
-      font-size: 1.2em;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      z-index: 200;
-    }
-
-    .compat-warning button {
-      margin: 10px;
-      padding: 10px 20px;
-      background: var(--accent-color);
-      border: none;
-      color: black;
-      font-weight: bold;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-
     @keyframes fadeInUp {
       to {
         opacity: 1;
@@ -251,77 +215,196 @@
   </style>
 </head>
 <body>
-<div class="compat-warning" id="compatWarning">
-  <p>We Prefer Using A Physical Keyboard To Play This Game.</p>
-  <button onclick="hideCompatWarning()">Continue</button>
-  <button onclick="window.history.back()">Go Back</button>
-</div>
 
-<!-- the rest of your HTML body will remain unchanged except JavaScript -->
-<script>
-const compatibilityMap = {
-  "Tic Tac Toe": true,
-  "Dino Game": false,
-  "Simon Says": true,
-  "Appel": false,
-  "Reaction Time Tester": true,
-  "Getting Over It": false,
-  "Offline Paradise": false,
-  "Paper.io 2": true,
-  "The Sands": true,
-  "Snake Game": true,
-  "Stacks": true,
-  "2048 Go": true,
-  "Hill Racing 2": false,
-  "Awesome Tanks": false,
-  "Wordle": true,
-  "Circloo": true,
-  "Doodle Jump": true,
-  "Doom": false,
-  "Fluid Simulator": true,
-  "Geometry Dash": false
-};
+  <div class="three-dots" onclick="toggleMenu()">
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+  </div>
 
-const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+  <div class="dropdown-menu" id="menu">
+    <button onclick="toggleTheme()">Toggle Dark/Light</button>
+    <button onclick="alert('Profile feature coming soon!')">Profile</button>
+    <button onclick="alert('Settings feature coming soon!')">Settings</button>
+    <button onclick="alert('Help section coming soon!')">Help</button>
+  </div>
 
-window.onload = function () {
-  const library = document.getElementById("library");
-  slotsData.forEach((slot, i) => {
-    const div = document.createElement("div");
-    div.className = "slot";
-    div.style.setProperty("--i", i);
+  <header>
+    <img src="https://raw.githubusercontent.com/gamesyte/gamesyte.github.io/main/logo.jpg" id="logo" alt="Logo"/>
+    <div id="site-title">GameSyte</div>
+  </header>
 
-    const isCompatible = compatibilityMap[slot.name];
-    const dotColor = isCompatible ? 'green' : 'red';
+  <div class="adsense-placeholder">[ Ad Placeholder ]</div>
 
-    const compatDot = isMobile ? `<div class="compat-dot" style="background:${dotColor};"></div>` : '';
+  <section id="library"></section>
 
-    div.innerHTML = `
-      ${compatDot}
-      <div class="thumbnail" onclick="handleSlotClick('${slot.name}', '${slot.link}')" style="background-image: url('${slot.thumbnail}')"></div>
-      <div class="slot-name">${slot.name}</div>
-      <button class="info-btn" onclick="togglePopup(${i})">i</button>
-      <div class="info-popup" id="popup-${i}">${slot.description}</div>
-    `;
+  <div class="adsense-placeholder">[ Ad Placeholder ]</div>
 
-    library.appendChild(div);
-  });
-};
+  <footer>
+    &copy; 2025 GameSyte. All rights reserved. [Version 1.0]
+  </footer>
 
-function handleSlotClick(name, link) {
-  if (isMobile && compatibilityMap[name] === false) {
-    document.getElementById("compatWarning").style.display = "flex";
-    document.getElementById("compatWarning").setAttribute("data-link", link);
-  } else {
-    window.location.href = link;
-  }
-}
+  <script>
+    const slotsData = [
+      {
+        name: "Tic Tac Toe",
+        link: "https://gamesyte.github.io/tictactoe/index.html",
+        description: "Classic 2-player game. Get 3 in a row to win!",
+        thumbnail: "https://raw.githubusercontent.com/gamesyte/gamesyte.github.io/main/tictactoe/icon.jpg"
+      },
+      {
+        name: "Dino Game",
+        link: "https://gamesyte.github.io/dino/index.html",
+        description: "Endless runner where you dodge cacti and birds!",
+        thumbnail: "https://raw.githubusercontent.com/gamesyte/gamesyte.github.io/main/dino/icon.jpg"
+      },
+      {
+        name: "Simon Says",
+        link: "https://gamesyte.github.io/simonsays/index.html",
+        description: "Repeat the color sequence! Test your memory",
+        thumbnail: "https://raw.githubusercontent.com/gamesyte/gamesyte.github.io/main/simonsays/icon.jpg"
+      },
+      {
+        name: "Appel",
+        link: "https://gamesyte.github.io/appel/index.html",
+        description: "Bounce, dodge, and leap your way through a world of spikes, traps, and tricky jumps in this fan-favorite platformer!",
+        thumbnail: "https://raw.githubusercontent.com/gamesyte/gamesyte.github.io/main/appel/icon.jpg"
+      },
+      {
+        name: "Reaction Time Tester",
+        link: "https://gamesyte.github.io/reaction/index.html",
+        description: "Test how fast your reflexes really are!",
+        thumbnail: "https://raw.githubusercontent.com/gamesyte/gamesyte.github.io/main/reaction/icon.jpg"
+      },
+      {
+        name: "Getting Over It",
+        link: "https://gamesyte.github.io/overit/index.html",
+        description: "Climb with a hammer. Rage guaranteed",
+        thumbnail: "https://raw.githubusercontent.com/gamesyte/gamesyte.github.io/main/overit/icon.png"
+      },
+      {
+        name: "Offline Paradise",
+        link: "https://gamesyte.github.io/offlineparadise/index.html",
+        description: "Dash, dodge, and survive!",
+        thumbnail: "https://raw.githubusercontent.com/gamesyte/gamesyte.github.io/main/offlineparadise/icon.png"
+      },
+      {
+        name: "Paper.io 2",
+        link: "https://gamesyte.github.io/paperio/index.html",
+        description: "Control your zone, eat the map, and outmaneuver your opponents",
+        thumbnail: "https://raw.githubusercontent.com/gamesyte/gamesyte.github.io/main/paperio/icon.png"
+      },
+      {
+        name: "The Sands",
+        link: "https://gamesyte.github.io/sand/index.html",
+        description: "Relax and experiment with falling sand particles. Mix elements, create reactions, and watch your own digital sandbox evolve",
+        thumbnail: "https://raw.githubusercontent.com/gamesyte/gamesyte.github.io/main/sand/icon.png"
+      },
+      {
+        name: "Snake Game",
+        link: "https://gamesyte.github.io/snake/index.html",
+        description: "A timeless classic! Guide the snake, collect food, and avoid crashing!",
+        thumbnail: "https://raw.githubusercontent.com/gamesyte/gamesyte.github.io/main/snake/snake.png"
+      },
+      {
+        name: "Stacks",
+        link: "https://gamesyte.github.io/stack/index.html",
+        description: "Stack the blocks perfectly in this rhythm-based game.",
+        thumbnail: "https://raw.githubusercontent.com/gamesyte/gamesyte.github.io/main/stack/icon.png"
+      },
+      {
+        name: "2048 Go",
+        link: "https://gamesyte.github.io/2048/index.html",
+        description: "Slide tiles, merge numbers, and reach 2048!",
+        thumbnail: "https://raw.githubusercontent.com/gamesyte/gamesyte.github.io/main/2048/icon.png"
+      },
+      {
+        name: "Hill Racing 2",
+        link: "https://gamesyte.github.io/hillclimbracing2/index.html",
+        description: "Climb hills, collect coins, and upgrade your car!",
+        thumbnail: "https://raw.githubusercontent.com/gamesyte/gamesyte.github.io/main/hillclimbracing2/cover.svg"
+      },
+      {
+        name: "Awesome Tanks",
+        link: "https://gamesyte.github.io/awesometanks/index.html",
+        description: "Customize your tank and battle enemies in explosive action!",
+        thumbnail: "https://raw.githubusercontent.com/gamesyte/gamesyte.github.io/main/awesometanks/cover.svg"
+      },
+      {
+        name: "Wordle",
+        link: "https://gamesyte.github.io/wordle/index.html",
+        description: "Guess the 5-letter word in 6 tries or less!",
+        thumbnail: "https://raw.githubusercontent.com/gamesyte/gamesyte.github.io/main/wordle/icon.png"
+      },
+      {
+        name: "Circloo",
+        link: "https://gamesyte.github.io/circloo/index.html",
+        description: "Roll, jump, and solve platform puzzles in circular worlds!",
+        thumbnail: "https://raw.githubusercontent.com/gamesyte/gamesyte.github.io/main/circloo/icon.png"
+      },
+      {
+        name: "Doodle Jump",
+        link: "https://gamesyte.github.io/doodlejump/index.html",
+        description: "Jump higher, dodge monsters, and collect powerups!",
+        thumbnail: "https://raw.githubusercontent.com/gamesyte/gamesyte.github.io/main/doodlejump/icon.png"
+      },
+      {
+        name: "Doom",
+        link: "https://gamesyte.github.io/doom/index.html",
+        description: "Blast demons in this 3D retro shooter classic!",
+        thumbnail: "https://raw.githubusercontent.com/gamesyte/gamesyte.github.io/main/doom/cover.svg"
+      },
+      {
+        name: "Fluid Simulator",
+        link: "https://gamesyte.github.io/fluidsim/index.html",
+        description: "Mix colors and enjoy realistic liquid simulations!",
+        thumbnail: "https://raw.githubusercontent.com/gamesyte/gamesyte.github.io/main/fluidsim/screenshot.jpg"
+      },
+      {
+        name: "Geometry Dash",
+        link: "https://gamesyte.github.io/geometrydash/index.html",
+        description: "Tap to the beat and survive this rhythm platformer!",
+        thumbnail: "https://raw.githubusercontent.com/gamesyte/gamesyte.github.io/main/geometrydash/icon.png"
+      }
+    ];
 
-function hideCompatWarning() {
-  const link = document.getElementById("compatWarning").getAttribute("data-link");
-  document.getElementById("compatWarning").style.display = "none";
-  window.location.href = link;
-}
-</script>
+    window.onload = function () {
+      const library = document.getElementById("library");
+      slotsData.forEach((slot, i) => {
+        const div = document.createElement("div");
+        div.className = "slot";
+        div.style.setProperty("--i", i);
+
+        div.innerHTML = `
+          <div class="thumbnail" onclick="window.location.href='${slot.link}'" style="background-image: url('${slot.thumbnail}')"></div>
+          <div class="slot-name">${slot.name}</div>
+          <button class="info-btn" onclick="togglePopup(${i})">i</button>
+          <div class="info-popup" id="popup-${i}">${slot.description}</div>
+        `;
+
+        library.appendChild(div);
+      });
+    };
+
+    function togglePopup(index) {
+      const popup = document.getElementById(`popup-${index}`);
+      popup.style.display = popup.style.display === 'block' ? 'none' : 'block';
+    }
+
+    function toggleMenu() {
+      const menu = document.getElementById('menu');
+      menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
+    }
+
+    function toggleTheme() {
+      const currentTheme = document.documentElement.getAttribute('data-theme');
+      document.documentElement.setAttribute('data-theme', currentTheme === 'light' ? 'dark' : 'light');
+    }
+
+    window.addEventListener('scroll', () => {
+      const offset = window.scrollY;
+      document.getElementById('site-title').style.transform = `translateY(-${Math.min(offset, 200)}px)`;
+    });
+  </script>
 </body>
 </html>
