@@ -422,11 +422,6 @@
       const offset = window.scrollY;
       document.getElementById('site-title').style.transform = `translateY(-${Math.min(offset, 200)}px)`;
     }
-                            
-      document.addEventListener('click', function(event) {
-        if (!event.target.classList.contains('info-btn')) {
-          document.querySelectorAll('.info-popup').forEach(popup => popup.style.display = 'none');
-     }
    });
 
   </script>
