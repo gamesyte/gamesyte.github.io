@@ -1,5 +1,6 @@
-<!DOCTYPE html>
+!DOCTYPE html>Add commentMore actions
 <html lang="en">
+<head>
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -8,8 +9,9 @@
 
   <!-- SEO Meta Tags -->
   <meta name="description" content="GameSyte - Play 20+ free online games including puzzle, action, and platformers. No downloads. Just pure fun!">
-  <meta name="keywords" content="free online games, GameSyte, play games, browser games, arcade, puzzle, action games, gamesite, gaming website, free gaming web, best gaming web, gamesyte, no 1 gaming website, poki games, crazy games, games, website, site, syte, github">
+  <meta name="keywords" content="free online games, GameSyte, play games, browser games, arcade, puzzle, action games">
   <meta name="author" content="GameSyte Team">
+  <meta name="theme-color" content="#0f0f0f" />
 
   <!-- Open Graph for social sharing -->
   <meta property="og:title" content="GameSyte - Free Online Games">
@@ -97,7 +99,7 @@
       opacity: 0;
       transform: translateY(20px);
       animation: fadeInUp 0.5s ease forwards;
-  
+
     }
 
     @keyframes fadeInUp {
@@ -246,7 +248,7 @@
   </div>
 
   <header>
-    <img src="https://raw.githubusercontent.com/gamesyte/gamesyte.github.io/main/logo.png" id="logo" alt="Logo"/>
+    <img src="https://raw.githubusercontent.com/gamesyte/gamesyte.github.io/main/logo.jpg" id="logo" alt="Logo"/>
     <div id="site-title">GameSyte</div>
   </header>
 
@@ -406,8 +408,8 @@
       const popup = document.getElementById(`popup-${index}`);
       popup.style.display = popup.style.display === 'block' ? 'none' : 'block';
     }
-    
-      function toggleMenu() {
+
+    function toggleMenu() {
       const menu = document.getElementById('menu');
       menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
     }
@@ -417,11 +419,10 @@
       document.documentElement.setAttribute('data-theme', currentTheme === 'light' ? 'dark' : 'light');
     }
 
-    window.addEventListener('scroll', () => {Add commentMore actions
+    window.addEventListener('scroll', () => {
       const offset = window.scrollY;
       document.getElementById('site-title').style.transform = `translateY(-${Math.min(offset, 200)}px)`;
     });
-
   </script>
 </body>
 </html>
