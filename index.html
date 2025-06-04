@@ -418,11 +418,10 @@
       document.documentElement.setAttribute('data-theme', currentTheme === 'light' ? 'dark' : 'light');
     }
 
-    window.addEventListener('scroll', () => {
+    window.addEventListener('scroll', () => {Add commentMore actions
       const offset = window.scrollY;
       document.getElementById('site-title').style.transform = `translateY(-${Math.min(offset, 200)}px)`;
-    }
-   });
+    });
 
   </script>
 </body>
