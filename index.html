@@ -408,7 +408,11 @@
       popup.style.display = popup.style.display === 'block' ? 'none' : 'block';
     }
 
-    function toggleMenu() {
+    document.addEventListener('click', function(event) {
+  if (!event.target.classList.contains('info-btn')) {
+    document.querySelectorAll('.info-popup').forEach(popup => popup.style.display = 'none');
+    }
+      function toggleMenu() {
       const menu = document.getElementById('menu');
       menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
     }
