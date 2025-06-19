@@ -42,7 +42,7 @@
 
     body {
       margin: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-family: 'Orbitron', sans-serif;
       background: var(--bg-color) url('') no-repeat center center fixed;
       background-size: cover;
       color: var(--text-color);
@@ -124,8 +124,10 @@
     .thumbnail {
       width: 100%;
       height: 140px;
-      object-fit: cover;
+      background: #333;
       border-radius: 8px;
+      background-size: cover;
+      background-position: center;
       cursor: pointer;
       transition: filter 0.3s ease;
     }
@@ -279,10 +281,11 @@
       const image = `https://gamesyte.github.io/${game.directory}/${game.image}`;
 
       div.innerHTML = `
-        <img class="thumbnail"src="${slot.thumbnail}" loading="lazy" onclick="window.location.href='${slot.link}'" alt="${slot.name} Thumbnail"/>
-        <div class="slot-name">${game.name}</div>
+         <img class="thumbnail" src="${slot.thumbnail}" loading="lazy" onclick="window.location.href='${slot.link}'" alt="${slot.name} Thumbnail">
+         <div class="slot-name">${slot.name}</div>
+         <button class="info-btn" onclick="togglePopup(${i})">i</button>
+         <div class="info-popup" id="popup-${i}">${slot.description}</div>
       `;
-
       library.appendChild(div);
     });
   }
