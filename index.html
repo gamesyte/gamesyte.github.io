@@ -282,10 +282,10 @@
 
       div.innerHTML = `
          <img class="thumbnail" src="${slot.thumbnail}" loading="lazy" onclick="window.location.href='${slot.link}'" alt="${slot.name} Thumbnail">
-         <div class="slot-name">${slot.name}</div>
-         <button class="info-btn" onclick="togglePopup(${i})">i</button>
-         <div class="info-popup" id="popup-${i}">${slot.description}</div>
-      `;
+  <div class="slot-name">${slot.name}</div>
+  <button class="info-btn" onclick="togglePopup(${i})">i</button>
+  <div class="info-popup" id="popup-${i}">${slot.description}</div>
+`;
       library.appendChild(div);
     });
   }
