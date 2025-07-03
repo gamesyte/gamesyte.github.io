@@ -197,6 +197,7 @@
     }
 
     .dropdown-menu {
+      <button onclick="goToRandomGame()">🎲 Random Game</button>
       position: fixed;
       top: 50px;
       right: 20px;
@@ -208,8 +209,12 @@
       flex-direction: column;
       gap: 10px;
       z-index: 100;
-    }
+     }
 
+    .dropdown-menu.open {
+      display: flex;
+     }
+      
     .dropdown-menu button {
       background: var(--accent-color);
       border: none;
@@ -282,11 +287,13 @@
     &copy; 2025 GameSyte. All rights reserved. [Version 1.5]
   </footer>
 
- <script>
+<script>
+  let gameList = [];
+
   async function fetchGames() {
-    const response = await fetch('games.json'); // or './data/games.json'
-    const games = await response.json();
-    renderGames(games);
+    const response = await fetch('games.json');
+    gameList = await response.json();
+    renderGames(gameList);
   }
 
   function renderGames(games) {
@@ -309,7 +316,28 @@
     });
   }
 
+  function goToRandomGame() {
+    if (gameList.length === 0) return;
+    const random = gameList[Math.floor(Math.random() * gameList.length)];
+    const url = `https://gamesyte.github.io/${random.directory}/index.html`;
+    window.location.href = url;
+  }
+
+  function toggleMenu() {
+    const menu = document.getElementById('menu');
+    menu.classList.toggle('open');
+  }
+
   window.onload = fetchGames;
+
+  // Smooth close menu if clicked outside
+  document.addEventListener('click', (e) => {
+    const dots = document.querySelector('.three-dots');
+    const menu = document.getElementById('menu');
+    if (!menu.contains(e.target) && !dots.contains(e.target)) {
+      menu.classList.remove('open');
+    }
+  });
 </script>
 </body>
 </html>
