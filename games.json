@@ -1,7 +1,7 @@
 [
 
       {
-    "name": "Deal or No Deal",
+    "nme": "Deal or No Deal",
     "image": "cover.svg",
     "directory": "deal",
     "recommended": "1"
