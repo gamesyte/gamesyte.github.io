@@ -2,9 +2,9 @@
 
       {
     "nme": "Deal or No Deal",
-    "image": "cover.svg",
-    "directory": "deal",
-    "recommended": "1"
+    "iage": "cover.svg",
+    "drectory": "deal",
+    "rcommended": "1"
   },
 {
     "name": "Soccer Skills",
