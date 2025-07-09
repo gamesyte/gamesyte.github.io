@@ -202,16 +202,6 @@
     "image": "icon.jpg"
   },
   {
-    "name": "Vex 5",
-    "directory": "vex5",
-    "image": "icon.png"
-  },
-  {
-    "name": "Vex 4",
-    "directory": "vex4",
-    "image": "vex4.png"
-  },
-  {
     "name": "Vex 2",
     "directory": "vex2",
     "image": "icon.png"
@@ -849,11 +839,6 @@
     "name": "Bad Ice Cream 3",
     "directory": "badicecream3",
     "image": "bad-ice-cream-3.png"
-  },
-  {
-    "name": "Bob the Robber 2",
-    "directory": "bobtherobber2",
-    "image": "icon.png"
   },
   {
     "name": "Flippy Fish",
