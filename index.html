@@ -6,49 +6,50 @@
     <title>GameSyte – Play Free Web Games</title>
     <meta name="google-site-verification" content="GQDsbAbHdjTgPDwoqNc_irR2kBu_PhtUQ5fs5LcwZck" />
 
-    <!-- SEO Meta Tags -->
     <meta name="description" content="GameSyte is your ultimate destination for 400+ free web games—no downloads, no signups, just pure instant fun.">
     <meta name="keywords" content="free online games, GameSyte, play games, browser games, arcade, puzzle, action games, gamesite, gaming website, free gaming web, best gaming web, gamesyte, no 1 gaming website, poki games, crazy games, games, website, site, syte, github">
     <meta name="author" content="GameSyte Team">
 
-    <!-- Open Graph for social sharing -->
     <meta property="og:title" content="GameSyte - Free Online Games">
     <meta property="og:description" content="GameSyte Games has 20+ browser games to play for free. Jump in and start playing instantly!">
     <meta property="og:image" content="https://raw.githubusercontent.com/gamesyte/gamesyte.github.io/main/logo.png">
     <meta property="og:url" content="https://gamesyte.github.io/">
 
-    <!-- Robots instruction -->
     <meta name="robots" content="index, follow" />
 
-    <!-- Favicon -->
     <link rel="icon" href="https://raw.githubusercontent.com/gamesyte/gamesyte.github.io/main/logo.png" type="image/png">
 
-    <!-- Google Fonts: Orbitron for futuristic look -->
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet"/>
-    <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
     <style>
-        /* CSS Variables for easy theme switching */
+        /* CSS Variables for a dynamic theme */
         :root {
-            --bg-color: #0d0d1a; /* Darker, more futuristic background */
-            --text-color: #e0e0e0; /* Off-white for readability */
-            --accent-color: #00e676; /* Vibrant green for highlights */
-            --secondary-accent: #673ab7; /* Purple for secondary elements */
-            --title-color: #ffffff; /* Pure white for main titles */
-            --card-bg: #1a1a2e; /* Dark background for game cards */
-            --border-glow: rgba(0, 230, 118, 0.7); /* Glow effect color */
+            /* General UI Colors - Darker, more aggressive theme */
+            --bg-color: #02020c; /* Deep navy/black */
+            --text-color: #f0f0f0; /* Off-white for readability */
+            --card-bg: #08081a; /* Dark, subtle blue-black for cards */
+
+            /* Blue Flame Theme Colors */
+            --flame-red: #1a2ad1; /* Main blue (replaces red) */
+            --flame-orange: #00bfff; /* Vibrant electric blue (replaces orange) */
+            --flame-yellow: #00ffff; /* Glowing aqua (replaces yellow) */
+            --flame-shadow-light: rgba(0, 255, 255, 0.4);
+            --flame-shadow-dark: rgba(26, 42, 209, 0.6);
+            --flame-gradient: linear-gradient(145deg, var(--flame-red) 0%, var(--flame-orange) 50%, var(--flame-yellow) 100%);
         }
 
         /* Light theme (currently not fully implemented for all elements, but ready) */
         [data-theme="light"] {
             --bg-color: #f0f0f0;
             --text-color: #333333;
-            --accent-color: #00bbaa;
-            --secondary-accent: #7e57c2;
-            --title-color: #000000;
             --card-bg: #ffffff;
-            --border-glow: rgba(0, 187, 170, 0.5);
+            --flame-red: #3c4ce7;
+            --flame-orange: #129cf3;
+            --flame-yellow: #0ff1c4;
+            --flame-shadow-light: rgba(15, 196, 241, 0.4);
+            --flame-shadow-dark: rgba(60, 76, 231, 0.6);
+            --flame-gradient: linear-gradient(145deg, var(--flame-red) 0%, var(--flame-orange) 50%, var(--flame-yellow) 100%);
         }
 
         /* Base Body Styles */
@@ -60,6 +61,35 @@
             overflow-x: hidden;
             transition: background 0.5s ease, color 0.5s ease;
             line-height: 1.6;
+            /* Smoky radial gradient for a deeper space feel */
+            background-image: radial-gradient(circle at center, #08081a 0%, #02020c 70%, #000000 100%);
+            background-attachment: fixed;
+        }
+
+        /* Custom scrollbar for futuristic look */
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #1a1a2e;
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--flame-red);
+            border-radius: 10px;
+            border: 2px solid #1a1a2e;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--flame-orange);
+        }
+
+        /* Text selection style */
+        ::selection {
+            background: var(--flame-orange);
+            color: var(--bg-color);
         }
 
         /* Header Section */
@@ -72,7 +102,7 @@
             justify-content: center;
             overflow: hidden;
             text-align: center;
-            background: linear-gradient(135deg, var(--bg-color) 0%, #1a0f30 100%); /* Subtle gradient */
+            background: linear-gradient(135deg, var(--bg-color) 0%, #101030 100%);
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
         }
 
@@ -81,9 +111,9 @@
             width: 120px;
             height: 120px;
             margin-bottom: 25px;
-            animation: spin 3s ease-out forwards; /* Slower, smoother spin */
+            animation: spin 3s ease-out forwards;
             border-radius: 50%;
-            box-shadow: 0 0 30px var(--accent-color); /* Glow effect */
+            box-shadow: 0 0 30px var(--flame-yellow); /* Glow effect with flame color */
         }
 
         @keyframes spin {
@@ -93,9 +123,9 @@
 
         /* Site Title */
         #site-title {
-            font-size: 4.5em; /* Larger title */
-            color: var(--title-color);
-            text-shadow: 0 0 15px var(--accent-color), 0 0 30px var(--secondary-accent); /* Dual glow */
+            font-size: 4.5em;
+            color: var(--text-color);
+            text-shadow: 0 0 15px var(--flame-yellow), 0 0 30px var(--flame-red);
             letter-spacing: 5px;
             animation: fadeInScale 1.5s ease-out forwards;
             opacity: 0;
@@ -124,8 +154,8 @@
         #game-search {
             width: 100%;
             padding: 15px 20px;
-            border: 2px solid var(--accent-color);
-            border-radius: 30px; /* Pill shape */
+            border: 2px solid var(--flame-orange);
+            border-radius: 30px;
             background-color: var(--card-bg);
             color: var(--text-color);
             font-family: 'Orbitron', sans-serif;
@@ -140,8 +170,8 @@
         }
 
         #game-search:focus {
-            border-color: var(--secondary-accent);
-            box-shadow: 0 0 15px var(--accent-color);
+            border-color: var(--flame-red);
+            box-shadow: 0 0 15px var(--flame-yellow);
         }
 
         /* Filter and Sort Options */
@@ -159,7 +189,7 @@
         .filter-sort-container select {
             background-color: var(--card-bg);
             color: var(--text-color);
-            border: 1px solid var(--secondary-accent);
+            border: 1px solid var(--flame-red);
             padding: 10px 20px;
             border-radius: 8px;
             font-family: 'Orbitron', sans-serif;
@@ -167,50 +197,51 @@
             cursor: pointer;
             transition: all 0.3s ease;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            appearance: none; /* Remove default select arrow */
+            appearance: none;
             -webkit-appearance: none;
             -moz-appearance: none;
         }
 
         .filter-sort-container button:hover,
         .filter-sort-container select:hover {
-            background-color: var(--secondary-accent);
-            border-color: var(--accent-color);
+            background: var(--flame-gradient);
+            color: #fff;
+            border-color: var(--flame-yellow);
             transform: translateY(-2px);
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3), 0 0 10px var(--secondary-accent);
+            box-shadow: 0 6px 15px var(--flame-shadow-dark), 0 0 10px var(--flame-yellow);
         }
 
         .filter-sort-container button.active,
         .filter-sort-container select.active {
-            background-color: var(--accent-color);
-            color: var(--bg-color);
-            border-color: var(--accent-color);
-            box-shadow: 0 6px 15px rgba(0, 230, 118, 0.4);
+            background: var(--flame-gradient);
+            color: #fff;
+            border-color: var(--flame-yellow);
+            box-shadow: 0 6px 15px var(--flame-shadow-dark);
         }
 
         /* Game Library Section */
         section#library {
             padding: 50px 20px;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Slightly larger min-width */
-            gap: 35px; /* Increased gap */
-            max-width: 1300px; /* Wider content area */
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 35px;
+            max-width: 1300px;
             margin: auto;
         }
 
         /* Individual Game Slot */
         .slot {
             background: var(--card-bg);
-            border-radius: 15px; /* More rounded corners */
+            border-radius: 15px;
             padding: 15px;
             text-align: center;
             position: relative;
             transition: transform 0.4s ease, box-shadow 0.4s ease, opacity 0.4s ease;
-            opacity: 0; /* Initial state for animation */
-            transform: translateY(30px); /* Initial state for animation */
-            animation: fadeInUp 0.6s ease forwards; /* Longer, smoother fade in */
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4); /* Deeper shadow */
-            border: 1px solid rgba(0, 230, 118, 0.2); /* Subtle border */
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.6s ease forwards;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+            border: 1px solid var(--flame-red);
         }
 
         @keyframes fadeInUp {
@@ -221,18 +252,18 @@
         }
 
         .slot:hover {
-            transform: translateY(-5px) scale(1.03); /* Lift and slightly scale */
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6), 0 0 30px var(--border-glow); /* Enhanced glow on hover */
-            border-color: var(--accent-color);
+            transform: translateY(-5px) scale(1.03);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6), 0 0 30px var(--flame-shadow-light);
+            border-color: var(--flame-orange);
         }
 
         /* Game Thumbnail Container */
         .thumbnail-container {
             width: 100%;
-            height: 180px; /* Fixed height for consistency, image will fit inside */
-            background-color: #0f0f1a; /* Dark background for empty space */
+            height: 180px;
+            background-color: #0f0f1a;
             border-radius: 10px;
-            overflow: hidden; /* Ensure image doesn't spill */
+            overflow: hidden;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -244,7 +275,7 @@
         .thumbnail-container img {
             width: 100%;
             height: 100%;
-            object-fit: contain; /* Maintain aspect ratio, fit within container */
+            object-fit: contain;
             display: block;
             transition: filter 0.3s ease, transform 0.3s ease;
         }
@@ -257,7 +288,7 @@
         /* Game Name */
         .slot-name {
             margin-top: 15px;
-            font-size: 1.2em; /* Slightly larger font */
+            font-size: 1.2em;
             font-weight: bold;
             color: var(--text-color);
             white-space: nowrap;
@@ -268,15 +299,15 @@
 
         /* Ad Placeholder */
         .adsense-placeholder {
-            height: 120px; /* Taller ad space */
+            height: 120px;
             background: #18182a;
             margin: 50px auto;
-            max-width: 970px; /* Wider ad space */
+            max-width: 970px;
             display: flex;
             justify-content: center;
             align-items: center;
             color: #666;
-            border: 2px dashed #333;
+            border: 2px dashed var(--flame-red);
             font-size: 1.2em;
             text-transform: uppercase;
             letter-spacing: 2px;
@@ -286,8 +317,8 @@
         }
 
         @keyframes pulseBorder {
-            from { border-color: #333; }
-            to { border-color: var(--secondary-accent); }
+            from { border-color: var(--flame-red); }
+            to { border-color: var(--flame-orange); }
         }
 
         /* Three Dots Menu Icon */
@@ -297,7 +328,7 @@
             right: 25px;
             display: flex;
             flex-direction: column;
-            gap: 8px; /* Increased gap */
+            gap: 8px;
             cursor: pointer;
             z-index: 100;
             padding: 10px;
@@ -312,7 +343,7 @@
         }
 
         .dot {
-            width: 8px; /* Larger dots */
+            width: 8px;
             height: 8px;
             background: var(--text-color);
             border-radius: 50%;
@@ -322,19 +353,19 @@
         /* Dropdown Menu */
         .dropdown-menu {
             position: fixed;
-            top: 70px; /* Adjusted position */
+            top: 70px;
             right: 25px;
-            background: rgba(26, 26, 46, 0.95); /* Semi-transparent card background */
-            border: 1px solid var(--accent-color);
-            padding: 20px; /* More padding */
+            background: rgba(8, 8, 26, 0.95); /* Blue-black semi-transparent */
+            border: 1px solid var(--flame-red);
+            padding: 20px;
             border-radius: 10px;
             display: none;
             flex-direction: column;
-            gap: 15px; /* Increased gap */
+            gap: 15px;
             z-index: 99;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
             animation: slideInRight 0.3s ease-out forwards;
-            transform: translateX(100%); /* Start off-screen */
+            transform: translateX(100%);
             opacity: 0;
         }
 
@@ -348,7 +379,7 @@
         }
 
         .dropdown-menu button {
-            background: var(--secondary-accent); /* Purple button */
+            background: var(--flame-red);
             color: white;
             padding: 12px 20px;
             border: none;
@@ -361,9 +392,9 @@
         }
 
         .dropdown-menu button:hover {
-            background: var(--accent-color); /* Green on hover */
+            background: var(--flame-orange);
             transform: translateY(-2px);
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4), 0 0 10px var(--accent-color);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4), 0 0 10px var(--flame-orange);
         }
 
         /* Random Game Button */
@@ -382,51 +413,88 @@
         }
 
         .random-game-button {
-            background-color: var(--accent-color); /* Vibrant green */
-            color: var(--bg-color); /* Dark text for contrast */
+            background: var(--flame-gradient);
+            color: #fff;
             padding: 15px 30px;
-            font-size: 1.2em; /* Larger text */
+            font-size: 1.2em;
             border: none;
-            border-radius: 10px; /* More rounded */
+            border-radius: 10px;
             cursor: pointer;
             font-family: 'Orbitron', sans-serif;
             text-transform: uppercase;
             letter-spacing: 1px;
             transition: all 0.3s ease;
-            box-shadow: 0 8px 20px rgba(0, 230, 118, 0.4); /* Green glow shadow */
-            display: inline-flex; /* Align icon and text */
+            box-shadow: 0 8px 20px var(--flame-shadow-dark);
+            display: inline-flex;
             align-items: center;
             gap: 10px;
         }
 
         .random-game-button i {
-            font-size: 1.5em; /* Larger icon */
+            font-size: 1.5em;
             text-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
         }
 
         .random-game-button:hover {
-            background-color: #00ff88; /* Slightly lighter green on hover */
+            background: linear-gradient(145deg, var(--flame-red) 0%, var(--flame-orange) 50%, var(--flame-yellow) 100%);
             transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 12px 25px rgba(0, 230, 118, 0.6), 0 0 30px var(--accent-color);
+            box-shadow: 0 12px 25px var(--flame-shadow-dark), 0 0 30px var(--flame-yellow);
         }
 
         /* Footer */
         footer {
             text-align: center;
-            padding: 30px;
-            color: #888;
-            font-size: 0.9em;
-            background: #11111f;
+            padding: 30px 20px;
+            color: #f0f0f0;
+            font-size: 1em;
+            /* Blue flame-inspired pattern */
+            background: repeating-linear-gradient(
+                45deg,
+                var(--bg-color) 0%,
+                var(--bg-color) 10px,
+                var(--flame-red) 10px,
+                var(--flame-red) 11px
+            ),
+            linear-gradient(to right, var(--card-bg), #0a0a2a, #1a1a4d, #0a0a2a, var(--card-bg));
+            background-size: 100% 100%, cover;
+            background-position: center;
             margin-top: 50px;
-            border-top: 1px solid #222;
-            box-shadow: inset 0 5px 15px rgba(0, 0, 0, 0.3);
+            border-top: 2px solid var(--flame-red);
+            box-shadow: 0 -5px 25px rgba(0, 0, 0, 0.7), 0 -2px 15px var(--flame-red);
+            letter-spacing: 0.8px;
+            text-shadow: 0 0 10px var(--flame-shadow-light);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Social Icons in footer */
+        .social-icons {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .social-icons a {
+            color: var(--flame-yellow);
+            font-size: 1.8em;
+            transition: color 0.3s ease, transform 0.2s ease, text-shadow 0.3s ease;
+            text-decoration: none;
+        }
+
+        .social-icons a:hover {
+            color: var(--flame-orange);
+            transform: translateY(-3px) scale(1.1);
+            text-shadow: 0 0 18px var(--flame-yellow);
         }
 
         /* Responsive Adjustments */
         @media (max-width: 768px) {
             #site-title { font-size: 3em; letter-spacing: 3px; }
             section#library {
-                grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* Smaller min-width for mobile */
+                grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
                 gap: 25px;
             }
             .slot { padding: 10px; }
@@ -442,7 +510,13 @@
             }
             .filter-sort-container button,
             .filter-sort-container select {
-                width: 80%; /* Make buttons/select full width on small screens */
+                width: 80%;
+            }
+            .social-icons {
+                gap: 15px;
+            }
+            .social-icons a {
+                font-size: 1.5em;
             }
         }
 
@@ -458,14 +532,12 @@
 </head>
 <body>
 
-    <!-- Three Dots Menu Icon -->
     <div class="three-dots" onclick="toggleMenu()">
         <div class="dot"></div>
         <div class="dot"></div>
         <div class="dot"></div>
     </div>
 
-    <!-- Dropdown Menu -->
     <div class="dropdown-menu" id="menu">
         <button onclick="toggleTheme()">Toggle Dark/Light</button>
         <button onclick="showAlert('Login/Signup feature coming soon! You\'ll be able to save progress and more.')">Login / Signup</button>
@@ -475,7 +547,6 @@
         <button onclick="showAlert('Help section coming soon!')">Help</button>
     </div>
 
-    <!-- Custom Alert/Message Box -->
     <div id="custom-alert" style="
         display: none;
         position: fixed;
@@ -483,7 +554,7 @@
         left: 50%;
         transform: translate(-50%, -50%);
         background-color: var(--card-bg);
-        border: 2px solid var(--accent-color);
+        border: 2px solid var(--flame-red);
         border-radius: 10px;
         padding: 30px;
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
@@ -496,8 +567,8 @@
     ">
         <p id="alert-message" style="font-size: 1.1em; margin-bottom: 20px;"></p>
         <button onclick="hideAlert()" style="
-            background-color: var(--accent-color);
-            color: var(--bg-color);
+            background-color: var(--flame-orange);
+            color: #fff;
             padding: 10px 25px;
             border: none;
             border-radius: 5px;
@@ -508,47 +579,44 @@
         ">OK</button>
     </div>
 
-    <!-- Header Section -->
     <header>
         <img src="https://raw.githubusercontent.com/gamesyte/gamesyte.github.io/main/logo.png" id="logo" alt="GameSyte Logo"/>
         <div id="site-title">GameSyte</div>
     </header>
 
-    <!-- Search Bar -->
     <div class="search-container">
         <input type="text" id="game-search" placeholder="Search for games..." onkeyup="applyFiltersAndSort()">
     </div>
 
-    <!-- Filter and Sort Options -->
     <div class="filter-sort-container">
         <button id="filter-all" class="active" onclick="setFilter('all')">All Games</button>
         <button id="filter-new" onclick="setFilter('new')">New Games</button>
         <button id="filter-popular" onclick="setFilter('popular')">Popular Games</button>
         <select id="category-filter" onchange="filterByCategory(this.value)">
             <option value="all-categories">All Categories</option>
-            <!-- Categories will be dynamically added here -->
-        </select>
+            </select>
     </div>
 
-    <!-- Top Ad Placeholder -->
     <div class="adsense-placeholder">[ Ad Placeholder ]</div>
 
-    <!-- Play Random Game Button -->
     <div class="random-game-button-container">
         <button onclick="goToRandomGame()" class="random-game-button">
             <i class="fas fa-dice"></i> Play a Random Game
         </button>
     </div>
     
-    <!-- Game Library Section -->
     <section id="library"></section>
 
-    <!-- Bottom Ad Placeholder -->
     <div class="adsense-placeholder">[ Ad Placeholder ]</div>
 
-    <!-- Footer Section -->
     <footer>
-        &copy; 2025 GameSyte. All rights reserved. [Version 2.0]
+        <p>&copy; 2025 GameSyte. All rights reserved. [Version 2.1]</p>
+        <div class="social-icons">
+            <a href="#" aria-label="Visit us on Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" aria-label="Visit us on Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="Visit us on Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="Visit us on Discord"><i class="fab fa-discord"></i></a>
+        </div>
     </footer>
 
     <script>
